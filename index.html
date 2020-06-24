@@ -26,7 +26,7 @@
         9 AM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
     <div class='row' id='10'>
@@ -34,7 +34,7 @@
         10 AM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
     <div class='row' id='11'>
@@ -42,7 +42,7 @@
         11 AM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
     <div class='row' id='12'>
@@ -50,55 +50,78 @@
         12 PM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
-    <div class='row' id='13'>
+    <div class='row' id='1'>
       <div class="col-xs-2 col-sm-2 col-md-2 hour">
         1 PM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
-    <div class='row' id='14'>
+    <div class='row' id='2'>
       <div class="col-xs-2 col-sm-2 col-md-2 hour">
         2 PM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
-    <div class='row' id='15'>
+    <div class='row' id='3'>
       <div class="col-xs-2 col-sm-2 col-md-2 hour">
         3 PM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
-    <div class='row' id='16'>
+    <div class='row' id='4'>
       <div class="col-xs-2 col-sm-2 col-md-2  hour">
         4 PM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
 
-    <div class='row' id='17'>
+    <div class='row' id='5'>
       <div class="col-xs-2 col-sm-2 col-md-2 hour">
         5 PM
       </div>
       <textarea class="past col-xs-9 col-sm-9 col-md-9 col-lg-9"></textarea>
-      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn"></button>
+      <button class="col-xs-1 col-sm-1 col-md-1 saveBtn">Save</button>
     </div>
-    
+
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js">
-    var time
-  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      // Upon initialization, the schedule planner will be populated with items in local storage.
+      $('.row').each( function(index) {
+        var appt = localStorage.getItem($(this).attr('id'));
+        if (appt !== null) {
+          $(this).find('textarea').val(appt);
+          
+        }
+      });
+
+      // When the 'save' button is pressed, 
+      $('button').on("click", function() {
+        var new_appt = $(this).parent().find('textarea').val();
+        var iD = $(this).parent().attr('id');
+        console.log(iD);
+        console.log(new_appt)
+        localStorage.setItem(iD, new_appt);
+      })
+
+    })
+    
+  </script>
 </body>
 
 </html>
