@@ -136,6 +136,7 @@
         localStorage.setItem(iD, new_appt);
       })
 
+      // Returns if the time block with the given iD is past, present, or future.
       function tense(iD) {
         var top_minutes = block_minutes(iD);
         var current_minutes = minutes_today();
@@ -152,12 +153,14 @@
         }
       };
 
+      // Returns the number of minutes that have elapsed between 12 am and the top of the selected hour.
       function block_minutes(iD) {
         var hour = parseInt(iD);
         var minutes = 60*hour
         return minutes
       }
 
+      // Returns the number of minutes that have elapsed between 12 am and the current time.
       function minutes_today() {
         var hours_today = moment().hour();
         var minutes_this_hour = moment().minutes();

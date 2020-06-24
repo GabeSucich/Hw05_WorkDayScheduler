@@ -1,5 +1,8 @@
 # Hw05_WorkDayScheduler
 
+This ask of this project was to functionalize a simple work day planner. CSS code was provided to style the HTML as seen below, but only the header of the page was provided in the HTML. After producing the structure of the page and applying the given CSS stylings, the task was two fold. Firstly, when the user clicked on a time-block, added an event, and then hit the save button, the page was to save that event so that is persisted upon refresh or closing and re-opening. Secondly, the page was supposed to update dynamically with time. The header was to display the current date, and the time blocks were to appear grey, red, or green depending on if those hours were past, present, or future, respectively.
+
+This project was a synthesis of jQuery DOM manipulation, local storage functionality, Bootstrap CSS formatting, and real-time display updating uses moment.js (see below).
 
 
 ## Getting Started
@@ -36,6 +39,9 @@ To get access to this project for development and testing, go through the follow
 
 ## Integral Code
 
+The dynamic part of this program is the updating of each time slot as "past", "present", or "future". This was done modularly through the following code, utilizing moment.js as a tool:
+
+![tense function](Markdown/tense.png)
 
 ## Project Snapshots
 
