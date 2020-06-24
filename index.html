@@ -103,6 +103,12 @@
 
       $('#currentDay').text(moment().format('dddd, MMMM Do'));
 
+      $('textarea').each( function(index) {
+          var iD = $(this).parent().attr('id');
+          var block_tense = tense(iD);
+          $(this).attr('data-tense', block_tense);
+        })
+
       // Upon initialization, the schedule planner will be populated with items in local storage.
       $('.row').each( function(index) {
         var appt = localStorage.getItem($(this).attr('id'));
@@ -110,7 +116,16 @@
           $(this).find('textarea').val(appt);
           
         }
-      });
+      }) 
+
+      setInterval(function() {
+        $('textarea').each( function(index) {
+          var iD = $(this).parent().attr('id');
+          var block_tense = tense(iD);
+          $(this).attr('data-tense', block_tense);
+        })
+
+      }, 1000)
 
       // When the 'save' button is pressed, 
       $('button').on("click", function() {
