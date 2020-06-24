@@ -101,6 +101,8 @@
 
     $(document).ready(function() {
 
+      $('#currentDay').text(moment().format('dddd, MMMM Do'));
+
       // Upon initialization, the schedule planner will be populated with items in local storage.
       $('.row').each( function(index) {
         var appt = localStorage.getItem($(this).attr('id'));
