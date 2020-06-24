@@ -101,8 +101,10 @@
 
     $(document).ready(function() {
 
+      // Will set the date in the header to the current, formatted date.
       $('#currentDay').text(moment().format('dddd, MMMM Do'));
 
+      // Upon initialization, each time-block will update with the appropriate color.
       $('textarea').each( function(index) {
           var iD = $(this).parent().attr('id');
           var block_tense = tense(iD);
@@ -118,6 +120,8 @@
         }
       }) 
 
+      // This sets the repeating interval that will update the colors of the time-blocks when the hours change.
+      // This interval runs once every minute.
       setInterval(function() {
         $('textarea').each( function(index) {
           var iD = $(this).parent().attr('id');
@@ -125,9 +129,9 @@
           $(this).attr('data-tense', block_tense);
         })
 
-      }, 1000)
+      }, 60000)
 
-      // When the 'save' button is pressed, 
+      // When the 'save' button is pressed, the event entered is saved in local storage.
       $('button').on("click", function() {
         var new_appt = $(this).parent().find('textarea').val();
         var iD = $(this).parent().attr('id');
@@ -135,6 +139,8 @@
         console.log(new_appt)
         localStorage.setItem(iD, new_appt);
       })
+
+      // HELPER FUNCTIONS
 
       // Returns if the time block with the given iD is past, present, or future.
       function tense(iD) {
